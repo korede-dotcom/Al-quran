@@ -1,13 +1,313 @@
+:root {
+  --child-color: rgba(26, 161, 240, 0.918);
+  --parent-color: rgb(26, 25, 25);
+  --primary-backgrouncolor: rgb(59, 59, 59);
+  --text-color: rgba(0, 0, 0, 0.699);
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif; */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h1,
+h2,
+p {
+  line-height: 1.5;
+}
 
+.App {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* grid-auto-rows: minmax(100px, auto); */
+  grid-template-areas:
+    "one "
+    "two "
+    "three ";
+  height: 100vh;
+  overflow: hidden;
+}
+.two.darkMode{
+  background-color: black;
+  color: rgb(131, 129, 129);
+  
+}
+.forDark{
+  color: #000;
+  background-color: hotpink;
+}
+
+.switch{
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  flex-direction:column;
+  margin: 0;
+  transition: .5s;
+  
+}
+#checkbox{
+  position: absolute;
+  opacity: 0;
+}
+.label{
+  display:flex;
+  justify-content:space-between;
+  align-items: center;
+  background-color: rgb(76, 77, 76);
+  position: relative;
+   width: 48px;
+  height: 25px;
+  border-radius: 50px;
+  padding:0px 2px;
+ 
+}
+i{
+  color: yellow;
+}
+.ball{
+  height:25px;
+  width:25px;
+  background-color: #fff;
+  position: absolute;
+   border-radius: 49px;
+  transition:1s ease .1s;
+}
+#checkbox:checked + .label > .ball{
+  transform: translateX(25px);
+  
+}
+
+
+.one {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  grid-area: one;
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+  background-color: var(--parent-color);
+  height: 10vh;
+}
+.one header {
+  flex: 0.7;
+}
+.one div {
+  flex: 0.3;
+}
+
+.one h1 {
+  color: #fff;
+  text-decoration: underline rgba(26, 161, 240, 0.918);
+  font-weight: 200;
+}
+.one > h2 {
+  color: antiquewhite;
+}
+.bar {
+  font-size: 1.5em;
+  color: var(--child-color);
+}
+.two {
+  grid-area: two;
+  color: var(--parent-color);
+  box-shadow: 2px 1px 1px 2px grey;
+  position: sticky;
+  height: 77vh;
+  transition: background 1s ease;
+  overflow: scroll;
+  scroll-behavior: smooth;
+  margin: 0;
+ 
+}
+.select{
+  position: fixed;
+  top: 10px;
+}
+
+.surahTitle {
+  color: var(--child-color);
+    padding: .2em;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.surah {
+  overflow: hidden;
+}
+.verse {
+  width: 80vw;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: space-between;
+  align-items: center;
+}
+.verse:nth-last-of-type(even) {
+  
+  border-radius: 10px;
+  box-shadow: lightslategray 1px 1px 1.3px 1.3px;
+  padding: 2em;
+  
+}
+.verse:nth-last-of-type(odd) {
+ background: inherit;
+  border-radius: 10px;
+  box-shadow: lightslategray 1px 1px 1.3px 1.3px;
+  padding: 2em;
+  
+}
+.verse li h4 {
+  border-radius: 5px;
+  padding: 10px;
+  min-width: 2.5678em;
+  color: var(--child-color);
+}
+.audio_title audio {
+  width: 50%;
+  margin: 0 auto;
+  outline: none;
+  height: 20px;
+}
+
+.three {
+  grid-area: three;
+  height: 13vh;
+  background-color: var(--parent-color);
+}
+
+.two select {
+  min-width: 200px;
+  padding: 10px;
+  margin: 0 auto;
+  background-color: var(--child-color);
+  color: #000;
+  /* position: sticky;
+  top: 10px; */
+  outline: none;
+  border: none;
+  border-radius: 0.2rem;
+  z-index: 1000000;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-align: center;
+  
+}
+
+/* safari */
+/* @media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0)
+{ @media {
+    
+}} */
+
+@media screen and (-webkit-min-device-pixel-ratio:0) and (min-color-index:0) {
+  .App {
+    
+  }
+  .two select{
+    position: fixed;
+    top: 10%;
+    left: 45%;
+      
+  }
+   
+  
+}
+
+
+.two select:hover,
+.two select:active {
+  transition: transform 0.1s ease-in-out 0.3s;
+}
+.mailto{
+  text-decoration: none;
+  color: rgb(65, 65, 65);
+}
+
+@media (min-width: 50em) {
+  .verse {
+    width: 500px;
+    margin: 10px auto;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1em;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 30em) {
+  body {
+    font-size: 0.9999em;
+    font-weight: 300;
+    font-size: smaller;
+  }
+  .App {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "one one"
+      "two two"
+      "three three";
+     
+  }
+  .one {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    align-items: center;
+  }
+  .one h2,
+  big {
+    font-weight: 800;
+    font-size: 0.722rem;
+  }
+  
+  
+  .two{
+    height: 70vh;
+  }
+  .verse {
+    width: 300px;
+    margin: 10px auto;
+    flex-direction: column;
+  }
+
+  .verse h4 {
+    color: var(--child-color);
+  }
+  .three {
+    height: 20vh;
+  
+  }
+
+
+@media screen and (-webkit-min-device-pixel-ratio:0) and (min-color-index:0) {
+  .two select{
+    left: 25%;
+    text-align: center;
+}
+.two{
+ height: 75vh;
+}
+.three{
+  margin-bottom: 40px;
+  
+}
+
+}
+
+
+}
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
